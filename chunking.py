@@ -29,7 +29,8 @@ def chunk_by_size(my_file):
     chunk_length_ms = chunk_length_in_sec * 1000
     chunks = make_chunks(myaudio, chunk_length_ms)
 
-    os.mkdir("process_chunks")
+    if not os.path.exists("process_chunks"):
+        os.mkdir("process_chunks")
 
     #Export all of the individual chunks as wav files
     for i, chunk in enumerate(chunks):
